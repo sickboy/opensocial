@@ -55,6 +55,6 @@ class OpensocialGenerator < Rails::Generator::Base
   
 private
   def get_latest_migration_number
-    Dir[File.join(RAILS_ROOT, 'db/migrate/*')].map{|name| File.basename(name)}.sort.last[/^([0-9]+)_/, 1].succ
+    Dir[File.join(Rails.root, 'db/migrate/*')].map{|name| File.basename(name)}.sort.last[/^([0-9]+)_/, 1].succ
   end
 end

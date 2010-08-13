@@ -1,5 +1,5 @@
 module OpenSocialContainer
-  
+
   # Thank you Jamis (http://weblog.jamisbuck.org/2006/10/26/monkey-patching-rails-extending-routes-2)
   module RouteSetter
     def self.included(base)
@@ -12,7 +12,7 @@ module OpenSocialContainer
         :domain => request.domain, :subdomain => (request.subdomains.first || request.host[/^([^\.]*)\./,1])
     end
   end
-  
+
   module RouteExt
     def self.included(base)
       base.alias_method_chain :recognition_conditions, :host

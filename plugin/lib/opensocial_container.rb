@@ -15,10 +15,10 @@ module ActionView
         self.content_tag(:iframe, '', {:src => opensocial_container_url(app, options.delete(:owner), options.delete(:viewer), options.delete(:instance_id)),
                           :id => frame_id, :name => frame_id,
                           :style => 'border:0px; padding:0px; margin:0px;', 
-                          :width => (app.width || '320'), 
-                          :height => (app.height || '200'), 
+                          :width => (app.width || '320'),
+                          :height => (app.height || '200'),
                           :scrolling => app.scrolling ? 'yes' : 'no '}.merge(options)) +
-        self.content_tag(:script, '
+        self.content_tag(:script, raw('
         /**
         *
         * Base64 encode / decode
@@ -196,7 +196,7 @@ module ActionView
         		}
         	}
         }, 1000);}, 2000);
-        ', :type => 'text/javascript')
+        '), :type => 'text/javascript')
       end
     end
   end

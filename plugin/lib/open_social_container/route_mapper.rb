@@ -1,9 +1,10 @@
-require 'action_controller/routing'
+#require 'action_controller/routing'
 # require File.join(File.dirname(__FILE__), 'route_ext')
 # require File.join(File.dirname(__FILE__), 'container_controller')
 
 module OpenSocialContainer
   module RouteMapper
+  	module_function
     def opensocial_container(domain)
       ::ActionController::Base.send(:define_method, :opensocial_container_url) do |app, owner, viewer, instance|
         owner_id = owner.is_a?(Numeric) ? owner : owner.id
@@ -48,4 +49,4 @@ module OpenSocialContainer
   end
 end
 
-ActionController::Routing::RouteSet::Mapper.send :include, OpenSocialContainer::RouteMapper
+#ActionController::Routing::RouteSet::Mapper.send :include, OpenSocialContainer::RouteMapper

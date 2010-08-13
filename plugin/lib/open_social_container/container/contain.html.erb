@@ -167,7 +167,7 @@
 			var _IG_Prefs = Class.create();
 			_IG_Prefs.prototype = {
 				initialize: function(){
-					this._prefs = <%= @app.user_preferences.to_json %>;
+					this._prefs = <%= raw(@app.user_preferences.to_json) %>;
 				},
 				getString: function(pref){
 					return this._prefs[pref]
@@ -244,12 +244,12 @@
         return i;
       }
       function _IG_GetCacheUrl(url) {
-        return <%= opensocial_container_proxy_path.to_json %> + "?src=" + url.gsub('&', '%26');
+        return <%= raw(opensocial_container_proxy_path.to_json) %> + "?src=" + url.gsub('&', '%26');
       }
 		</script>
 	</head>
 	<body style="margin: 0px; padding: 0px;" onload="___IG_RunOnloadHandlers();">
 	  <iframe id="os_comm_frame" name="os_comm_frame" style="display:none" height="0" width="0"></iframe>
-		<div id="gadget_body"><%= @app.content %></div>
+		<div id="gadget_body"><%= raw(@app.content) %></div>
 	</body>
 </html>
