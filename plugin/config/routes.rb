@@ -1,5 +1,4 @@
 SixComm::Application.routes.draw do
-  OpenSocialContainer::RouteMapper.opensocial_container("6thsense.eu")
   namespace :feeds do
     resources :apps do
       resources :persistence, :collection => {:global => :get}, :member => {:friends => :get} do

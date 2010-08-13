@@ -24,27 +24,7 @@ module OpenSocialContainer
       ::ActionController::Base.send(:define_method, :opensocial_container_proxy_path) do
         "/proxy"
       end
-      ::ActionController::Base.send :helper_method, :opensocial_container_url, :opensocial_container_proxy_url, :opensocial_container_proxy_path
-      
-      self.namespace :feeds do |feed|
-        feed.resources :apps do |app|
-          app.resources :persistence, :collection => {:global => :get}, :member => {:friends => :get} do |persistent|
-            persistent.resources :shared
-            persistent.resources :instance
-          end
-        end
-        feed.namespace :activities do |activity|
-          activity.resources :user
-        end
-        feed.resources :people, :member => {:friends => :get}
-      end
-      
-      @set.add_route('/container', 
-                          {:controller => 'open_social_container/container', 
-                          :action => 'contain'})
-      @set.add_route('/proxy', 
-                          {:controller => 'open_social_container/container', 
-                          :action => 'proxy'})
+      ::ActionController::Base.send :helper_method, :opensocial_container_url, :opensocial_container_proxy_url, :opensocial_container_proxy_path     
     end
   end
 end
